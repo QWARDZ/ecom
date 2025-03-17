@@ -1,0 +1,190 @@
+/* Admin Panel Styles */
+
+/* Sidebar */
+.admin-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    height: 100vh;
+}
+
+.admin-sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    margin: 0.2rem 0;
+}
+
+.admin-sidebar .nav-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.admin-sidebar .nav-link i {
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main content */
+.admin-content {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.admin-body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Cards */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 0.75rem 1.25rem;
+}
+
+/* Tables */
+.table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+/* Dashboard stats */
+.stats-card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-icon {
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+/* Forms */
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767.98px) {
+    .admin-sidebar {
+        position: static;
+        height: auto;
+        box-shadow: none;
+    }
+    
+    .admin-content {
+        margin-left: 0 !important;
+    }
+}
+
+/* Book image thumbnails */
+.book-thumbnail {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.book-details-img {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Order status badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: #0d6efd;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Modal customization */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Chart containers */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Admin login page */
+.admin-login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.admin-login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.admin-login-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.admin-login-logo i {
+    font-size: 3rem;
+    color: #0d6efd;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+} 
