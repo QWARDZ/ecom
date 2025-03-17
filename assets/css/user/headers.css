@@ -1,0 +1,99 @@
+/* Navbar Base Styles */
+.custom-navbar {
+    background-color: #2c3e50; /* Dark blue */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar-brand {
+    color: #ecf0f1 !important; /* Light gray */
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #1abc9c !important; /* Teal on hover */
+}
+
+.navbar-toggler {
+    border-color: #ecf0f1; /* Light gray border */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(236, 240, 241, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Nav Links */
+.nav-link {
+    color: #ecf0f1 !important; /* Light gray */
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #1abc9c !important; /* Teal on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+.dropdown-menu {
+    background-color: #2c3e50; /* Dark blue */
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    color: #ecf0f1 !important; /* Light gray */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    color: #fff !important; /* White on hover */
+    background-color: #1abc9c; /* Teal background */
+}
+
+/* Buttons */
+.search-form .btn-outline-light {
+    border-color: #ecf0f1; /* Light gray border */
+    color: #ecf0f1; /* Light gray text */
+    transition: all 0.3s ease;
+}
+
+.search-form .btn-outline-light:hover {
+    background-color: #1abc9c; /* Teal background */
+    border-color: #1abc9c; /* Teal border */
+    color: #fff; /* White text */
+}
+
+.cart-btn, .login-btn, .register-btn, .user-btn {
+    transition: all 0.3s ease;
+}
+
+.cart-btn:hover, .login-btn:hover, .register-btn:hover, .user-btn:hover {
+    background-color: #1abc9c; /* Teal background */
+    border-color: #1abc9c; /* Teal border */
+    color: #fff; /* White text */
+}
+
+.register-btn {
+    background-color: #1abc9c; /* Teal background */
+    color: #fff; /* White text */
+}
+
+.register-btn:hover {
+    background-color: #16a085; /* Darker teal */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.navbar {
+    animation: fadeIn 1s ease-in-out;
+}

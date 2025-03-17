@@ -128,8 +128,8 @@ closeDB($conn);
                                         <td><?php echo $user['email']; ?></td>
                                         <td><?php echo date('M d, Y', strtotime($user['registration_date'])); ?></td>
                                         <td>
-                                            <span class="badge bg-<?php echo $user['status'] == 'active' ? 'success' : 'danger'; ?>">
-                                                <?php echo ucfirst($user['status']); ?>
+                                            <span class="badge bg-<?php echo isset($user['status']) && $user['status'] == 'active' ? 'success' : 'danger'; ?>">
+                                                <?php echo isset($user['status']) ? ucfirst($user['status']) : 'Unknown'; ?>
                                             </span>
                                         </td>
                                         <td>

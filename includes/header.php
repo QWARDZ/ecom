@@ -1,13 +1,18 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container">
+            <!-- Navbar Brand -->
             <a class="navbar-brand" href="index.php">
                 <i class="fas fa-book-reader me-2"></i>
                 Programming Books
             </a>
+
+            <!-- Navbar Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Navbar Content -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -42,14 +47,16 @@
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                 </ul>
+
+                <!-- Search and User Section -->
                 <div class="d-flex align-items-center">
-                    <form class="d-flex me-2" action="search.php" method="GET">
+                    <form class="d-flex me-2 search-form" action="books.php" method="GET">
                         <input class="form-control me-2" type="search" name="query" placeholder="Search books..." aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
-                    <a href="cart.php" class="btn btn-outline-light position-relative me-2">
+                    <a href="cart.php" class="btn btn-outline-light position-relative me-2 cart-btn">
                         <i class="fas fa-shopping-cart"></i>
                         <?php
                         if (isset($_SESSION['user_id'])) {
@@ -69,7 +76,7 @@
                     </a>
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <div class="dropdown">
-                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-outline-light dropdown-toggle user-btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-user me-1"></i>
                                 <?php echo $_SESSION['username']; ?>
                             </button>
@@ -83,10 +90,10 @@
                             </ul>
                         </div>
                     <?php else: ?>
-                        <a href="login.php" class="btn btn-outline-light me-2">
+                        <a href="login.php" class="btn btn-outline-light me-2 login-btn">
                             <i class="fas fa-sign-in-alt me-1"></i> Login
                         </a>
-                        <a href="register.php" class="btn btn-light">
+                        <a href="register.php" class="btn btn-light register-btn">
                             <i class="fas fa-user-plus me-1"></i> Register
                         </a>
                     <?php endif; ?>

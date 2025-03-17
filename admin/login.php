@@ -22,14 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn = connectDB();
 
         // Check admin credentials
-        $sql = "SELECT * FROM admins WHERE username = '$username'";
-        $result = $conn->query($sql);
+        $sql = "SELECT * FROM admins WHERE (username = ? OR email = ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $username, $username); // Bind username for both placeholders
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result->num_rows == 1) {
             $admin = $result->fetch_assoc();
 
-            // Verify password
-            if (password_verify($password, $admin['password'])) {
+            // Check if password matches directly (for plain text passwords)
+            if ($password == $admin['password']) {
                 // Set session variables
                 $_SESSION['admin_id'] = $admin['admin_id'];
                 $_SESSION['admin_username'] = $admin['username'];
@@ -39,12 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: index.php");
                 exit();
             } else {
-                $error = "Invalid username or password";
+                $error = "Password incorrect";
             }
         } else {
-            $error = "Invalid username or password";
+            $error = "Username or email not found";
         }
 
+        $stmt->close();
         closeDB($conn);
     }
 }

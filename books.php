@@ -34,9 +34,35 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     $pageTitle = "Search Results: " . $_GET['search'];
 }
 
+// Pagination setup
+$booksPerPage = 9; // Number of books per page
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1;
+
+// Count total books for pagination
+$countSql = "SELECT COUNT(*) as total FROM books $whereClause";
+$countStmt = $conn->prepare($countSql);
+
+if (!empty($params)) {
+    $countStmt->bind_param($paramTypes, ...$params);
+}
+
+$countStmt->execute();
+$countResult = $countStmt->get_result();
+$totalBooks = $countResult->fetch_assoc()['total'];
+$totalPages = ceil($totalBooks / $booksPerPage);
+
+// Calculate offset for pagination
+$offset = ($page - 1) * $booksPerPage;
+
 // Fetch books
-$sql = "SELECT * FROM books $whereClause ORDER BY title";
+$sql = "SELECT * FROM books $whereClause ORDER BY title LIMIT ? OFFSET ?";
 $stmt = $conn->prepare($sql);
+
+// Add pagination parameters
+$params[] = $booksPerPage;
+$params[] = $offset;
+$paramTypes .= "ii"; // i for integer type
 
 if (!empty($params)) {
     $stmt->bind_param($paramTypes, ...$params);
@@ -82,36 +108,14 @@ closeDB($conn);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/user/headers.css" rel="stylesheet">
+    <link href="assets/css/user/book.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Header -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1><?php echo $pageTitle; ?></h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                            <?php if (isset($_GET['category'])): ?>
-                                <li class="breadcrumb-item"><a href="books.php">Books</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><?php echo $_GET['category']; ?></li>
-                            <?php elseif (isset($_GET['search'])): ?>
-                                <li class="breadcrumb-item"><a href="books.php">Books</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Search Results</li>
-                            <?php else: ?>
-                                <li class="breadcrumb-item active" aria-current="page">Books</li>
-                            <?php endif; ?>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Books Section -->
     <div class="container py-5">
@@ -126,8 +130,8 @@ closeDB($conn);
                                 <a href="books.php" class="<?php echo !isset($_GET['category']) ? 'active' : ''; ?>">All Categories</a>
                             </li>
                             <?php foreach ($categories as $cat): ?>
-                                <li class="list-group-item">
-                                    <a href="books.php?category=<?php echo urlencode($cat); ?>" class="<?php echo isset($_GET['category']) && $_GET['category'] == $cat ? 'active' : ''; ?>">
+                                <li class="list-group-item <?php echo (isset($_GET['category']) && $_GET['category'] == $cat) ? 'active' : ''; ?>">
+                                    <a href="books.php?category=<?php echo urlencode($cat); ?>" class="<?php echo (isset($_GET['category']) && $_GET['category'] == $cat) ? 'active' : ''; ?>">
                                         <?php echo $cat; ?>
                                     </a>
                                 </li>

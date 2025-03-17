@@ -4,7 +4,7 @@ include 'config/database.php';
 $conn = connectDB();
 
 // Fetch featured books
-$sql = "SELECT * FROM books ORDER BY added_date DESC LIMIT 6";
+$sql = "SELECT * FROM books ORDER BY added_date DESC LIMIT 3";
 $result = $conn->query($sql);
 $featuredBooks = [];
 
@@ -39,8 +39,12 @@ closeDB($conn);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/user/headers.css" rel="stylesheet">
+    <!-- <link href="assets/css/footer.css" rel="stylesheet"> -->
+    <link href="assets/css/user/user_index.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -48,20 +52,22 @@ closeDB($conn);
     <?php include 'includes/header.php'; ?>
 
     <!-- Hero Section -->
-    <div class="container-fluid hero-section py-5 bg-light">
+    <div class="container-fluid hero-section py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="display-4 fw-bold">Programming Books for Every Developer</h1>
+                    <h1 class="display-4 fw-bold ">Programming Books for Every Developer</h1>
                     <p class="lead">Discover the best programming books to enhance your coding skills and stay ahead in the tech world.</p>
                     <a href="books.php" class="btn btn-primary btn-lg">Browse Books</a>
                 </div>
                 <div class="col-md-6">
-                    <img src="assets/images/hero-image.jpg" alt="Programming Books" class="img-fluid rounded shadow">
+                    <img src="assets/images/z1.png" alt="Programming Books" class="img-fluid rounded shadow">
                 </div>
             </div>
         </div>
     </div>
+
+    <hr>
 
     <!-- Featured Books Section -->
     <div class="container py-5">
@@ -70,12 +76,14 @@ closeDB($conn);
             <?php foreach ($featuredBooks as $book): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="assets/images/books/<?php echo $book['image']; ?>" class="card-img-top" alt="<?php echo $book['title']; ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $book['title']; ?></h5>
+                        <div class="book-image-container">
+                            <img src="assets/images/books/<?php echo $book['image']; ?>" class="card-img-top book-cover-image" alt="<?php echo $book['title']; ?>">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title book-title"><?php echo $book['title']; ?></h5>
                             <p class="card-text text-muted">By <?php echo $book['author']; ?></p>
-                            <p class="card-text"><?php echo substr($book['description'], 0, 100) . '...'; ?></p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <p class="card-text book-description flex-grow-1"><?php echo substr($book['description'], 0, 100) . '...'; ?></p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
                                 <span class="h5 text-primary">$<?php echo $book['price']; ?></span>
                                 <a href="book-details.php?id=<?php echo $book['book_id']; ?>" class="btn btn-outline-primary">View Details</a>
                             </div>
@@ -89,24 +97,8 @@ closeDB($conn);
         </div>
     </div>
 
-    <!-- Categories Section -->
-    <div class="container-fluid bg-light py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Browse by Category</h2>
-            <div class="row justify-content-center">
-                <?php foreach ($categories as $category): ?>
-                    <div class="col-md-3 col-sm-6 mb-4">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $category; ?></h5>
-                                <a href="books.php?category=<?php echo urlencode($category); ?>" class="btn btn-outline-primary">Browse</a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
+
+    <hr>
 
     <!-- Why Choose Us Section -->
     <div class="container py-5">
@@ -141,6 +133,7 @@ closeDB($conn);
             </div>
         </div>
     </div>
+
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>
