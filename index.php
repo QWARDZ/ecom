@@ -40,7 +40,7 @@ closeDB($conn);
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/user/headers.css" rel="stylesheet">
-    <!-- <link href="assets/css/footer.css" rel="stylesheet"> -->
+    <link href="assets/css/footer.css" rel="stylesheet">
     <link href="assets/css/user/user_index.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

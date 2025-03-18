@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container">
+        <div class="container-fluid px-5">
             <!-- Navbar Brand -->
             <a class="navbar-brand" href="index.php">
                 <i class="fas fa-book-reader me-2"></i>

@@ -10,7 +10,9 @@
     font-weight: bold;
     font-size: 1.2rem;
     transition: color 0.3s ease;
+    padding-right: 60px;
 }
+
 
 .navbar-brand:hover {
     color: #1abc9c !important; /* Teal on hover */
@@ -26,7 +28,9 @@
 
 /* Nav Links */
 .nav-link {
-    color: #ecf0f1 !important; /* Light gray */
+    padding: 0 15px; /* Horizontal space */
+    margin: 0 11px; /* Vertical space */
+    color: #ecf0f1 !important; /* Ensure link color is consistent */
     font-weight: 500;
     transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -97,3 +101,4 @@
 .navbar {
     animation: fadeIn 1s ease-in-out;
 }
+

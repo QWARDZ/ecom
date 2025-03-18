@@ -109,7 +109,8 @@ closeDB($conn);
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/user/headers.css" rel="stylesheet">
-    <link href="assets/css/user/book.css" rel="stylesheet">
+    <link href="assets/css/user/books.css" rel="stylesheet">
+    <link href="assets/css/user/footer.css" rel="stylesheet">
 </head>
 
 <body>
@@ -118,13 +119,13 @@ closeDB($conn);
 
 
     <!-- Books Section -->
-    <div class="container py-5">
+    <div class="container-fluid px-4 py-5 my-3">
         <div class="row">
             <!-- Sidebar -->
             <div class="col-lg-3 mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Categories</h5>
+                        <h3 class="card-title">Categories</h3>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item <?php echo !isset($_GET['category']) ? 'active' : ''; ?>">
                                 <a href="books.php" class="<?php echo !isset($_GET['category']) ? 'active' : ''; ?>">All Categories</a>
@@ -150,16 +151,15 @@ closeDB($conn);
                 <?php else: ?>
                     <div class="row">
                         <?php foreach ($books as $book): ?>
-                            <div class="col-md-4 mb-4">
-                                <div class="card h-100 book-card" data-category="<?php echo $book['category']; ?>">
+                            <div class="col-md-3 mb-4">
+                                <div class="card h-100 book-card">
                                     <img src="assets/images/books/<?php echo $book['image']; ?>" class="card-img-top" alt="<?php echo $book['title']; ?>">
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $book['title']; ?></h5>
                                         <p class="card-text text-muted">By <?php echo $book['author']; ?></p>
-                                        <p class="card-text"><?php echo substr($book['description'], 0, 100) . '...'; ?></p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="h5 text-primary">$<?php echo $book['price']; ?></span>
-                                            <a href="book-details.php?id=<?php echo $book['book_id']; ?>" class="btn btn-outline-primary">View Details</a>
+                                            <a href="book-details.php?id=<?php echo $book['book_id']; ?>" class="btn btn-outline-primary btn-sm">View Details</a>
                                         </div>
                                     </div>
                                     <div class="card-footer bg-white">

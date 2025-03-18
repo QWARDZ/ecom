@@ -1,83 +1,58 @@
-<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark admin-sidebar collapse">
-    <div class="position-sticky pt-3">
-        <div class="px-3 py-4 d-flex justify-content-between align-items-center">
-            <a href="index.php" class="text-decoration-none text-white">
-                <h5 class="mb-0"><i class="fas fa-book-reader me-2"></i> Admin Panel</h5>
-            </a>
-            <button class="btn btn-link d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
-                <i class="fas fa-times text-white"></i>
-            </button>
-        </div>
-
-        <div class="px-3 mb-4">
-            <div class="d-flex align-items-center">
-                <div class="bg-primary rounded-circle p-2 me-2">
-                    <i class="fas fa-user text-white"></i>
-                </div>
-                <div>
-                    <p class="text-white mb-0"><?php echo $_SESSION['admin_full_name']; ?></p>
-                    <small class="text-muted">Administrator</small>
-                </div>
-            </div>
-        </div>
-
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>" href="index.php">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'manage-books.php' || basename($_SERVER['PHP_SELF']) == 'add-book.php' || basename($_SERVER['PHP_SELF']) == 'edit-book.php' ? 'active' : ''; ?>" href="manage-books.php">
-                    <i class="fas fa-book"></i>
-                    Books
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'manage-orders.php' || basename($_SERVER['PHP_SELF']) == 'view-order.php' ? 'active' : ''; ?>" href="manage-orders.php">
-                    <i class="fas fa-shopping-cart"></i>
-                    Orders
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'manage-users.php' ? 'active' : ''; ?>" href="manage-users.php">
-                    <i class="fas fa-users"></i>
-                    Users
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'sales-report.php' ? 'active' : ''; ?>" href="sales-report.php">
-                    <i class="fas fa-chart-bar"></i>
-                    Sales Report
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>" href="settings.php">
-                    <i class="fas fa-cog"></i>
-                    Settings
-                </a>
-            </li>
-        </ul>
-
-        <hr class="my-3 bg-secondary">
-
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="../index.php" target="_blank">
-                    <i class="fas fa-external-link-alt"></i>
-                    View Website
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logout.php">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
-                </a>
-            </li>
-        </ul>
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h5><i class="fas fa-book"></i> Admin Panel</h5>
     </div>
-</nav>
+
+    <div class="admin-profile">
+        <img src="../assets/images/admin-avatar.jpg" alt="Admin"
+            onerror="this.src='../assets/images/default-avatar.png'"
+            class="admin-avatar">
+        <span><?php echo isset($_SESSION['admin_username']) ? $_SESSION['admin_username'] : 'admin'; ?></span>
+    </div>
+
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>" href="index.php">
+                <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'manage-books.php' ? 'active' : ''; ?>" href="manage-books.php">
+                <i class="fas fa-book"></i> <span>Books</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'manage-orders.php' ? 'active' : ''; ?>" href="manage-orders.php">
+                <i class="fas fa-shopping-cart"></i> <span>Orders</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'manage-users.php' ? 'active' : ''; ?>" href="manage-users.php">
+                <i class="fas fa-users"></i> <span>Users</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'sales-report.php' ? 'active' : ''; ?>" href="sales-report.php">
+                <i class="fas fa-chart-bar"></i> <span>Sales Report</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>" href="settings.php">
+                <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+        </li>
+        <li class="nav-item mt-3">
+            <a class="nav-link" href="../index.php" target="_blank">
+                <i class="fas fa-external-link-alt"></i> <span>View Website</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-danger" href="logout.php">
+                <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+            </a>
+        </li>
+    </ul>
+</div>
 
 <!-- Mobile navbar toggle -->
 <nav class="navbar navbar-dark bg-dark d-md-none">
@@ -101,3 +76,21 @@
         </div>
     </div>
 </nav>
+
+<style>
+    .admin-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #3a3f44;
+        border: 2px solid #4e5359;
+    }
+
+    .admin-profile {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        gap: 10px;
+    }
+</style>

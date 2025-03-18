@@ -1,0 +1,84 @@
+/* Add this to your CSS file or within a <style> tag in the head */
+.list-group-item.active {
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* Light text color */
+    border-radius: 4px;
+}
+
+.list-group-item.active a {
+    color: #ffffff; /* Light text color for the link */
+}
+
+.list-group-item a {
+    text-decoration: none; /* Remove underline from links */
+}
+
+/* Book card improvements */
+.book-card {
+    margin-bottom: 1rem;
+}
+
+.book-card .btn {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+.book-card .card-footer {
+    padding: 0.5rem 1rem;
+}
+
+.book-card .h5.text-primary {
+    font-size: 1rem;
+}
+
+.book-card .badge {
+    padding: 0.35em 0.5em;
+    font-size: 0.75rem;
+}
+
+
+
+
+
+
+
+
+
+
+/* Book Card Improvements */
+.book-card {
+    margin-bottom: 1rem; /* Space between cards */
+    max-width: 300px; /* Set a maximum width for the card */
+    border: 1px solid #ddd; /* Optional: Add a border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.book-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.book-card .card-img-top {
+    height: 150px; /* Set a fixed height for images */
+    object-fit: cover; /* Ensure images cover the area */
+}
+
+.book-card .card-body {
+    padding: 0.5rem; /* Reduce padding */
+}
+
+.book-card .card-title {
+    font-size: 1rem; /* Smaller title */
+    margin-bottom: 0.5rem; /* Space below title */
+}
+
+.book-card .card-text {
+    font-size: 0.875rem; /* Smaller text */
+    margin-bottom: 0.5rem; /* Space below text */
+}
+
+.book-card .badge {
+    font-size: 0.75rem; /* Smaller badge text */
+    padding: 0.25em 0.5em; /* Adjust badge padding */
+} 

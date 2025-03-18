@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2025 at 03:14 PM
+-- Generation Time: Mar 18, 2025 at 07:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `username`, `email`, `password`, `full_name`, `created_at`) VALUES
-(3, 'admin', 'admin@gmail.com', '121', 'admin', '2025-03-17 22:09:29');
+(3, 'admin', 'admin@gmail.com', 'admin123', 'admin', '2025-03-17 22:09:29');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,10 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`book_id`, `title`, `author`, `description`, `price`, `image`, `category`, `stock`, `publication_date`, `added_date`) VALUES
-(11, 'golang', 'ikawww', 'asdasdasd', 132.00, '1742206443__0aab6700-fd4e-4f5a-b3b9-e071ac439a1d.jpeg', 'Web Development', 6, '2025-03-17', '2025-03-17 18:14:03');
+(12, 'Clean Code: A Handbook of Agile Software Craftsmanship', 'Robert C. Martin', '\"Clean Code\" provides a comprehensive guide to writing clean, maintainable code, with a focus on simplicity and readability. Martin shares principles and techniques to help programmers refactor and improve their codebases.', 38.99, '1742226425_61orja1+P7L._AC_UF1000,1000_QL80_.jpg', 'Programming', 30, '2008-08-11', '2025-03-17 23:45:45'),
+(13, 'Eloquent JavaScript: A Modern Introduction to Programming', 'Marijn Haverbeke', 'A detailed introduction to programming with JavaScript, covering everything from the basics to advanced concepts like asynchronous programming.', 29.99, '1742228158_images.jpg', 'Web Development', 30, '2018-12-04', '2025-03-18 00:15:58'),
+(14, 'HTML and CSS: Design and Build Websites', 'Jon Duckett', 'An accessible guide for beginners to web design using HTML and CSS, with plenty of visual examples.', 39.99, '1742228281_10361330.jpg', 'Web Development', 30, '2016-11-16', '2025-03-18 00:18:01'),
+(15, 'The Pragmatic Programmer: Your Journey to Mastery', 'Andrew Hunt, David Thomas', 'A guide to becoming a better, more practical programmer, offering insights into software development and problem-solving.', 49.99, '1742228443_71f1jieYHNL._SL1043_.jpg', 'Programming', 16, '1999-10-12', '2025-03-18 00:20:43');
 
 -- --------------------------------------------------------
 
@@ -99,6 +102,13 @@ CREATE TABLE `orders` (
   `payment_method` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `order_date`, `total_amount`, `status`, `shipping_address`, `payment_method`) VALUES
+(5, 5, '2025-03-18 01:42:32', 60.98, 'Shipped', 'sad, iloilpo, asd 5006', 'cash_on_delivery');
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +122,13 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`item_id`, `order_id`, `book_id`, `quantity`, `price`) VALUES
+(8, 5, 15, 1, 49.99);
 
 -- --------------------------------------------------------
 
@@ -127,15 +144,16 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `address` text DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
-  `registration_date` datetime DEFAULT current_timestamp()
+  `registration_date` datetime DEFAULT current_timestamp(),
+  `status` enum('active','inactive') DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `name`, `address`, `phone`, `registration_date`) VALUES
-(5, 'edward', 'edward@gmail.com', 'edward', 'edward', 'sad', '123123123', '2025-03-17 20:07:29');
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `name`, `address`, `phone`, `registration_date`, `status`) VALUES
+(5, 'edward', 'edward@gmail.com', 'edward123', 'John Edward', 'iloilo City', '123123123', '2025-03-17 20:07:29', 'inactive');
 
 --
 -- Indexes for dumped tables
@@ -200,25 +218,25 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
