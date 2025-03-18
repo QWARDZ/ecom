@@ -1,85 +1,240 @@
-/* Admin Sidebar Styling */
+/* Admin Sidebar Styling - Mobile First Approach */
 .sidebar {
-    background-color: #212529;
-    min-height: 100vh;
-    width: 250px;
-    color: #fff;
-    transition: all 0.3s;
+    display: none; /* Hide the default sidebar on mobile */
+    background-color: #343a40; /* Darker background for better contrast */
+    color: #ffffff; /* Ensure text is white for visibility */
+    width: 310px !important; /* Force consistent width */
     position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
     z-index: 100;
+    padding: 0;
 }
 
-.sidebar-header {
-    padding: 20px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.main-content {
+    margin-left: 0 !important; /* Remove left margin on mobile */
+    padding: 15px;
+    width: 100%;
 }
 
-.sidebar .nav-link {
-    color: rgba(255, 255, 255, 0.7);
+/* Add spacing for mobile navbar */
+body {
+    padding-top: 56px; /* Height of the mobile navbar */
+}
+
+/* Navbar styling improvements */
+.navbar.navbar-dark {
+    background-color: #212529;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Only show regular sidebar on desktop */
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+        width: 180px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        background-color: #212529;
+        padding: 15px;
+    }
+
+    .main-content {
+        margin-left: 180px !important;
+    }
+
+    /* Hide mobile navbar on desktop */
+    .navbar.navbar-dark.d-md-none {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .main-content {
+        margin-left: 250px !important;
+    }
+}
+
+/* Offcanvas improvements */
+.offcanvas.offcanvas-start {
+    width: 280px; /* Wider mobile menu */
+    background-color: #343a40; /* Dark background for offcanvas */
+}
+
+.offcanvas .nav-link {
     padding: 12px 15px;
-    margin: 5px 0;
-    border-radius: 4px;
-    transition: all 0.3s;
+    color: rgba(255, 255, 255, 0.9); /* Lighter text for offcanvas */
 }
 
-.sidebar .nav-link:hover {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
+.offcanvas .nav-link:hover {
+    color: #ffffff; /* Ensure hover text is white */
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
 }
 
-.sidebar .nav-link.active {
-    color: #fff;
-    background-color: #0d6efd;
+.offcanvas .nav-link.active {
+    color: #ffffff; /* Active link color */
+    background-color: #0d6efd; /* Active link background */
 }
 
-.sidebar .nav-link i {
-    margin-right: 10px;
+.offcanvas .nav-link i {
     width: 20px;
+    margin-right: 10px;
     text-align: center;
 }
 
-.admin-profile {
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+.sidebar-header {
+    padding: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    background-color: #212529; /* Slightly lighter for header */
+}
+
+.sidebar-header h5 {
+    font-size: 0;  /* Hide text on mobile by default */
+}
+
+.sidebar-header i {
+    font-size: 1.5rem;
+    display: block;
+    color: #ffffff; /* Ensure icon is visible */
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.9); /* Lighter text for better visibility */
+    padding: 10px 5px;
+    margin: 5px 0;
+    border-radius: 4px;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.sidebar .nav-link span {
+    display: none;  /* Hide text by default on mobile */
+}
+
+.sidebar .nav-link:hover {
+    color: #ffffff; /* Ensure hover text is white */
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+}
+
+.sidebar .nav-link.active {
+    color: #ffffff; /* Active link color */
+    background-color: #0d6efd; /* Active link background */
+}
+
+.sidebar .nav-link i {
+    margin-right: 0;
+    width: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.admin-profile {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #212529; /* Consistent background for profile */
 }
 
 .admin-profile img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 10px;
 }
 
-/* Main content area adjustment */
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-    transition: all 0.3s;
+.admin-profile span {
+    color: #ffffff; /* Ensure username is visible */
+    display: none;  /* Hide username on mobile */
 }
 
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    .sidebar {
-        width: 70px;
+/* Tablet and desktop adjustments */
+@media (min-width: 768px) {
+    .sidebar-header {
+        padding: 15px;
+        text-align: left;
+    }
+    
+    .sidebar-header h5 {
+        font-size: 1rem;
+    }
+    
+    .sidebar-header i {
+        display: inline;
+        margin-right: 5px;
+    }
+    
+    .sidebar .nav-link {
+        padding: 10px 15px;
+        text-align: left;
     }
     
     .sidebar .nav-link span {
-        display: none;
+        display: inline;
+        margin-left: 5px;
     }
     
     .sidebar .nav-link i {
-        margin-right: 0;
-        font-size: 1.2rem;
+        margin-right: 5px;
     }
     
-    .main-content {
-        margin-left: 70px;
+    .admin-profile {
+        justify-content: flex-start;
+        padding: 15px;
     }
     
     .admin-profile span {
-        display: none;
+        display: block;
+        margin-left: 10px;
     }
+}
+
+/* Large desktop adjustments */
+@media (min-width: 1200px) {
+    .sidebar-header h5 {
+        font-size: 1.25rem;
+    }
+    
+    .sidebar .nav-link {
+        padding: 10px 15px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 60px;
+    }
+    
+    .main-content {
+        margin-left: 60px;
+        padding: 10px;
+    }
+}
+
+/* Ensure proper text visibility on badges */
+.badge {
+    font-size: 0.8rem;
+    padding: 0.35em 0.65em;
+    font-weight: 600;
+}
+
+.badge.bg-warning {
+    color: #212529 !important; /* Dark text for warning (yellow) badges */
+}
+
+.badge.bg-info,
+.badge.bg-primary,
+.badge.bg-success,
+.badge.bg-danger {
+    color: #ffffff !important; /* White text for darker badges */
 }

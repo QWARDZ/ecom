@@ -215,9 +215,11 @@ closeDB($conn);
                                                         <td>
                                                             <?php
                                                             $statusClass = '';
+                                                            $textClass = 'text-dark';
                                                             switch ($order['status']) {
                                                                 case 'pending':
-                                                                    $statusClass = 'bg-warning';
+                                                                    $statusClass = 'bg-warning text-dark';
+                                                                    $textClass = '';
                                                                     break;
                                                                 case 'processing':
                                                                     $statusClass = 'bg-info';
@@ -233,7 +235,7 @@ closeDB($conn);
                                                                     break;
                                                             }
                                                             ?>
-                                                            <span class="badge <?php echo $statusClass; ?>"><?php echo ucfirst($order['status']); ?></span>
+                                                            <span class="badge <?php echo $statusClass; ?> <?php echo $textClass; ?>"><?php echo ucfirst($order['status']); ?></span>
                                                         </td>
                                                         <td>
                                                             <a href="view-order.php?id=<?php echo $order['order_id']; ?>" class="btn btn-sm btn-outline-primary">
